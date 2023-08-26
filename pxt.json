@@ -1,0 +1,33 @@
+{
+    "name": "pxt-fastloops",
+    "version": "0.0.2",
+    "description": "Fast infinite loops.",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "fastloops.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true,
+    "targetVersions": {
+        "target": "5.0.12",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj",
+    "authors": [
+        "Bill Siever <bsiever@gmail.com>"
+    ],
+    "card": {
+        "name": "Fast Loops",
+        "imageUrl": "file:../icon.png",
+        "feedbackUrl": "http://siever.info"
+    }
+}
