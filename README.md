@@ -1,11 +1,6 @@
-# Button Clicks
+# Fast Loops
 
-This extension expands the behaviors supported by the A & B buttons.  It supports (mutually exclusive) detection of a single click of a button, a double click of a button, or holding a button down. 
-
-These behave a lot like the touch screen, where the user can tap, double tap, or hold down.  
-
-They are different than ``[input.onButtonPressed()]``, which detects when a button is pressed.  When a button is "double clicked" would call the event handler twice. Holding a button would cause the event handler to be called once.  The basic eveng handler does not have an be easy way to distinguish between the three different types of behavior. 
-
+This extension expands provides infinite loops that can repeat faster than the normal `forever` loop.
 
 # Single Button Clicks
 
@@ -168,13 +163,7 @@ basic.showIcon(IconNames.Heart)
 
 # Acknowledgements 
 
-Icon based on [Font Awesome icon 0xF0A7](https://www.iconfinder.com/search?q=f0a7) SVG.
-
-This extension was partly imspired by a question from Daniel Gallichan on the micro:bit Slack forums.  I wanted this sort of behavior too, but Daniel's question made me think carefully about it.  
-
-Jonny Austin and Martin Williams provided guidance on additional features and a lot of pre-release cleanup.
-
-Thanks to Daniel, Jonny, and Martin!
+Icon based on [Font Awesome icon 0xF1DA](https://www.iconfinder.com/search?q=history) SVG.
 
 # Misc. 
 
@@ -185,7 +174,7 @@ I develop micro:bit extensions in my spare time to support activities I'm enthus
 for PXT/microbit
 
 ```package
-microbit-pxt-clicks=github:bsiever/microbit-pxt-clicks
+pxt-fastloops=github:bsiever/pxt-fastloops
 ```
 
 <script src="https://makecode.com/gh-pages-embed.js"></script>
