@@ -1,165 +1,30 @@
-# Fast Loops
+# Fast Forever Loop
 
-This extension expands provides infinite loops that can repeat faster than the normal `forever` loop.
+This extension provides a forver loop that can repeat faster than the normal `forever` loop.
 
-# Single Button Clicks
-
-```sig
-buttonClicks.onButtonSingleClicked(button: buttonClicks.AorB, body: Action) : void
-``` 
-
-Set the actions to do on a single click. 
-
-# Double Button Clicks
+# Forver
 
 ```sig
-buttonClicks.onButtonDoubleClicked(button: buttonClicks.AorB, body: Action) : void
+fastForever.fastForever(handler: handler: () => void) : void
 ``` 
 
-Set the actions to do on a double click. 
+A fast forever loop.  Top frequency is about 250Hz on the micro:bit V2, which is 5 time faster than the 50Hz of the regular `forever` loop.
 
-# Holding Buttons (Long Clicks)
+# Faster Forever 
 
-```sig
-buttonClicks.onButtonHeld(button: buttonClicks.AorB, body: Action) : void
-``` 
-
-Set the actions to do while the button is held down.
+```sig 
+fastForver.fasterForever(time: number, handler: () => void) : void
+```
+A faster forever loop.  Top frequency is about 150kHz on the micro:bit V2, which is 3,000 time faster than the 50Hz of the regular `forever` loop.
+The `number` indicates how long (in milliseconds) between official pauses, which are needed to allow other tasks to run.
 
 ### ~alert
 
-# Holding a button down 
+# Starves all other code
 
-Holding the button will cause this event to happen repeated while the button is held.  
+This loop can "starve" out all other code, including the `fastForever` and vital system tasks.
 
 ### ~
-
-
-
-# Button Down 
-
-```sig
-buttonClicks.onButtonDown(button: buttonClicks.AorB, body: Action) : void
-``` 
-
-Set the actions to do when the button first makes contact when being pressed. This will run before other events, like single click, double click, and button held.
-
-
-# Button Up
-
-```sig
-buttonClicks.onButtonUp(button: buttonClicks.AorB, body: Action) : void
-``` 
-
-Set the actions to do when the button is released. This will run before before events, like single click, double click, and button held.
-
-# Example 
-
-The following program will show the behavior on both the LED grid and the serial console.  
-
-* The buttons that cause a click event will be shown at the top row of LEDs:
-  * Interaction with button A will be indicated with a single LED in the upper *left*.
-  * Interaction with button B will be indicated with a single LED in the upper *right*. 
-* The second row will show the up/down events briefly (it may be erased when other events happen)
-  * The left LED will toggle on/off when button A is pressed/released
-  * The right LED will toggle on/off when button A is pressed/released
-* The specific event will be indicated on the bottom row:
-  * A single click will be shown with a single LED on the bottom left. 
-  * A double click will be shown with a two LEDs on the bottom (leftmost and middle). 
-  * Holding a button will be shown by lighting all five LEDs.
-
-```block
-
-buttonClicks.onButtonSingleClicked(buttonClicks.AorB.B, function () {
-    serial.writeLine("B single")
-    basic.showLeds(`
-        . . . . #
-        . . . . .
-        . . . . .
-        . . . . .
-        # . . . .
-        `)
-    showClear()
-})
-buttonClicks.onButtonDown(buttonClicks.AorB.B, function () {
-    serial.writeLine("B down")
-    led.toggle(4, 1)
-})
-buttonClicks.onButtonDoubleClicked(buttonClicks.AorB.A, function () {
-    serial.writeLine("A double")
-    basic.showLeds(`
-        # . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        # . # . .
-        `)
-    showClear()
-})
-buttonClicks.onButtonUp(buttonClicks.AorB.B, function () {
-    serial.writeLine("B up")
-    led.toggle(4, 1)
-})
-buttonClicks.onButtonUp(buttonClicks.AorB.A, function () {
-    serial.writeLine("A up")
-    led.toggle(0, 1)
-})
-function showClear () {
-    basic.pause(100)
-    basic.clearScreen()
-}
-buttonClicks.onButtonDown(buttonClicks.AorB.A, function () {
-    serial.writeLine("A down")
-    led.toggle(0, 1)
-})
-buttonClicks.onButtonHeld(buttonClicks.AorB.B, function () {
-    serial.writeLine("B held")
-    basic.showLeds(`
-        . . . . #
-        . . . . .
-        . . . . .
-        . . . . .
-        # # # # #
-        `)
-    showClear()
-})
-buttonClicks.onButtonSingleClicked(buttonClicks.AorB.A, function () {
-    serial.writeLine("A single")
-    basic.showLeds(`
-        # . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        # . . . .
-        `)
-    showClear()
-})
-buttonClicks.onButtonDoubleClicked(buttonClicks.AorB.B, function () {
-    serial.writeLine("B double")
-    basic.showLeds(`
-        . . . . #
-        . . . . .
-        . . . . .
-        . . . . .
-        # . # . .
-        `)
-    showClear()
-})
-buttonClicks.onButtonHeld(buttonClicks.AorB.A, function () {
-    serial.writeLine("A held")
-    basic.showLeds(`
-        # . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        # # # # #
-        `)
-    showClear()
-})
-basic.showIcon(IconNames.Heart)
-
-```
-
 
 # Acknowledgements 
 
